@@ -232,8 +232,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       child: const SizedBox(),
                     )
                   ],
-
-                  // child:
                 ),
               ),
             ),
@@ -287,7 +285,6 @@ class ImgCircularFile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
-
     return ClipRRect(
       borderRadius: BorderRadius.circular(height * 0.2),
       child: Image.file(

@@ -18,8 +18,6 @@ class _EditAdScreenState extends State<EditAdScreen> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    print('data: ${widget.data}');
-    print('data: ${widget.data['_id']}');
     previousScreen() {
       Navigator.pop(context);
       Navigator.pop(context);
@@ -71,8 +69,6 @@ class _EditAdScreenState extends State<EditAdScreen> {
                             );
                           });
                     }
-
-                    // Navigator.pop(context);
                   },
                   child: const Text('OK'),
                 ),

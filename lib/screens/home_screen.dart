@@ -72,7 +72,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 List<String> images = allAds[index].images!;
                 String? image =
                     images.isEmpty ? null : allAds[index].images![0];
-                // return Text('Hola');
                 return GestureDetector(
                   child: CardAd(
                     data: allAds[index],
@@ -90,7 +89,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             );
-            // List<AdModel> allAds = snapshot.data!;
           }
           if (snapshot.hasError) {
             return const Center(

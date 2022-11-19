@@ -12,9 +12,6 @@ class CardAd extends StatelessWidget {
     this.title,
     this.price,
     required this.data,
-    // required this.title,
-    // required this.price,
-    // required this.image,
   });
 
   @override
@@ -30,7 +27,6 @@ class CardAd extends StatelessWidget {
             height: double.infinity,
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) {
-              // return Text('$error');
               return Image.network(
                 'http://panther-wheels.net/assets/images/noimage.jpg',
                 height: double.infinity,

@@ -7,11 +7,6 @@ class ProductDetailScreen extends StatelessWidget {
   final dynamic data;
   @override
   Widget build(BuildContext context) {
-    print('details: ${data.toJson()}');
-    var date = DateTime.now();
-    var date2 = DateTime.parse(data.createdAt.toString());
-    print('date2 $date2');
-    print('date: $date');
     int daysAgo = DateCalculator().daysAgo(data.createdAt.toString());
     return Scaffold(
       appBar: AppBar(),
@@ -56,7 +51,6 @@ class ProductDetailScreen extends StatelessWidget {
                         // return Text('$error');
                         return Image.network(
                           'http://panther-wheels.net/assets/images/noimage.jpg',
-                          // height: double.infinity,
                           fit: BoxFit.cover,
                         );
                       },

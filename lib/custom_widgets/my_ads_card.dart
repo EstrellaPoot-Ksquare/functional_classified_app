@@ -71,7 +71,7 @@ class MyAdsCard extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

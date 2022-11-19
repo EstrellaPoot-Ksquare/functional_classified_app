@@ -9,7 +9,6 @@ class ApiService {
   FlutterSecureStorage storage = const FlutterSecureStorage();
   Future<String> _getToken() async {
     String token = await storage.read(key: 'token') ?? '';
-    print('storage token: $token');
     return token.toString();
   }
 
@@ -18,13 +17,9 @@ class ApiService {
     var headers = {
       'Authorization': 'Bearer $token',
     };
-    print('contenttype: $contentType');
     contentType == true
         ? headers.addAll({'Content-Type': 'application/json'})
         : null;
-    print(headers);
-    print(headers.runtimeType);
-
     return headers;
   }
 
@@ -52,7 +47,6 @@ class ApiService {
     var response = await request.send();
     var resp = await response.stream.bytesToString();
     var respJson = jsonDecode(resp);
-    print(respJson);
     return respJson;
   }
 
@@ -63,18 +57,14 @@ class ApiService {
   }) async {
     var responseJson;
     var requestUrl = Uri.parse("${Constants().serverUrl}$enpoint");
-    print(requestUrl);
     var headers = await _getHeaders(contentType: contentType);
-    print(headers);
     try {
       var response = await http.post(
         requestUrl,
         headers: headers,
         body: jsonEncode(body),
       );
-      print('resp no handle: ${response.body.toString()}');
       responseJson = _handleResponse(response);
-      print('PostResponse: $responseJson');
     } catch (e) {
       print('error $e');
     }
@@ -90,25 +80,20 @@ class ApiService {
     } catch (e) {
       print('Error: $e');
     }
-    print('post respnse: $responseJson');
     return responseJson;
   }
 
   patch(endpoint, body) async {
     var responseJson;
     var requestUrl = Uri.parse('${Constants().serverUrl}$endpoint');
-    print(requestUrl);
     var headers = await _getHeaders();
-    print(headers);
     try {
       var response = await http.patch(
         requestUrl,
         headers: headers,
         body: jsonEncode(body),
       );
-      print('PatchResNohandle: ${response.body.toString()}');
       responseJson = _handleResponse(response);
-      print('PatchResponseHandled: $responseJson');
     } catch (e) {
       print('erros patch: $e');
     }
@@ -126,9 +111,7 @@ class ApiService {
         requestUrl,
         headers: headers,
       );
-      print('PatchResNohandle: ${response.body.toString()}');
       responseJson = _handleResponse(response);
-      print('PatchResponseHandled: $responseJson');
     } catch (e) {
       print('erros patch: $e');
     }
@@ -136,12 +119,10 @@ class ApiService {
   }
 
   _handleSuccessResponse(http.Response response) {
-    print(jsonDecode(response.body).toString());
     return jsonDecode(response.body);
   }
 
   _handleSucessStreamedResponse(http.StreamedResponse response) async {
-    print(jsonDecode(await response.stream.bytesToString()));
     var resp = await response.stream.bytesToString();
     return jsonDecode(resp);
   }

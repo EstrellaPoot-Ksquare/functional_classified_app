@@ -37,7 +37,6 @@ class ImageViewerScreen extends StatelessWidget {
                     child: Image.network(
                       image,
                       errorBuilder: (context, error, stackTrace) {
-                        // return Text('$error');
                         return Image.network(
                           'http://panther-wheels.net/assets/images/noimage.jpg',
                           height: double.infinity,

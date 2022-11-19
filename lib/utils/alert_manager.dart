@@ -5,12 +5,6 @@ class AlertManager {
   displaySnackbar(context, text) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        // action: SnackBarAction(
-        //   label: 'OK',
-        //   onPressed: () {
-        //     // Code to execute.
-        //   },
-        // ),
         content: Container(
           alignment: Alignment.center,
           height: 50,

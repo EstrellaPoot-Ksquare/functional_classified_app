@@ -144,8 +144,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       password: _passwordCtrl.text,
                                     );
                                     print(user.toJson());
-                                    // AuthService().register(user);
-                                    // Navigator.pushReplacementNamed(context, '/home');
                                     _register(user);
                                   }
                                 },

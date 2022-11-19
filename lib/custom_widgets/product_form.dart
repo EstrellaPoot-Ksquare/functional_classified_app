@@ -48,7 +48,6 @@ class _ProductFormState extends State<ProductForm> {
     KeyboardFunctions().closeKeyboard(context);
     _loading = true;
     setState(() {});
-
     var resp = await AdService().updateAd(ad, newImages, id, context);
     _loading = false;
     setState(() {});
@@ -94,7 +93,6 @@ class _ProductFormState extends State<ProductForm> {
       fontSize: 20,
     );
     final double width = MediaQuery.of(context).size.width;
-    // imagesList = widget.data['images'];
     return Stack(
       children: [
         Padding(
@@ -115,9 +113,6 @@ class _ProductFormState extends State<ProductForm> {
                     setState(() {});
                   },
                   onTap: () {
-                    // _loadImage('gallery');
-                    // print('path: $imagePath');
-
                     showModalBottomSheet(
                       context: context,
                       builder: (BuildContext context) {
@@ -132,7 +127,6 @@ class _ProductFormState extends State<ProductForm> {
                                   child: GestureDetector(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      // _loadImage('gallery');
                                       _loadMultipleImages();
                                     },
                                     child: Container(
@@ -221,7 +215,6 @@ class _ProductFormState extends State<ProductForm> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ImagesList(
-                        // images: imagesList,
                         images: widget.data['images'],
                       ),
                       const SizedBox(height: 30),
@@ -230,7 +223,6 @@ class _ProductFormState extends State<ProductForm> {
                 TextFormField(
                   validator: (value) =>
                       Validators.validateStringNotEmpty(value),
-                  // autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: ctrl['title'],
                   keyboardType: TextInputType.text,
                   decoration: const InputDecoration(

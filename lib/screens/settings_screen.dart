@@ -17,7 +17,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     const double profileSize = 40;
-
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
@@ -28,7 +27,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 var user = snapshot.data!;
-                print('user: ${snapshot.data}');
                 return ListView(
                   children: [
                     ListTile(
@@ -76,7 +74,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       onTap: () {
                         var myAds = AdService().getMyAds();
-                        print('MY ADS: $myAds');
                         Navigator.pushNamed(context, '/my-ads',
                                 arguments: myAds)
                             .then((value) => setState(() {}));

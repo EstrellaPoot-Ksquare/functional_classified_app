@@ -8,7 +8,6 @@ class SingleImageLoaded extends StatelessWidget {
     Key? key,
     required this.image,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
