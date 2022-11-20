@@ -24,7 +24,7 @@ class AdModel {
     id = json['_id'] ?? '';
     title = json['title'] ?? '';
     description = json['description'] ?? '';
-    price = json['price'].toDouble() ?? '';
+    price = json['price'] != null ? json['price'].toDouble() : 0;
     images = json['images'] != null
         ? List<String>.from(json['images'].map((x) => x))
         : ['https://via.placeholder.com/300x400'];
