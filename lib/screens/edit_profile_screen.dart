@@ -25,6 +25,16 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
+  Map<String, TextEditingController> ctrl = {};
+  @override
+  void initState() {
+    ctrl = FormControllers.controllersFor([
+      'name',
+      'email',
+      'mobile',
+    ], data: widget.myUser.toJson());
+  }
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String imagePath = '';
   void _loadImage(source) async {
@@ -44,6 +54,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   void _updatingProfile(user, filePath) async {
+    KeyboardFunctions().closeKeyboard(context);
     _loading = true;
     setState(() {});
     var resp =
@@ -59,11 +70,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, TextEditingController> ctrl = FormControllers.controllersFor([
-      'name',
-      'email',
-      'mobile',
-    ], data: widget.myUser.toJson());
     return Scaffold(
         key: const Key('EditScaffold'),
         resizeToAvoidBottomInset: false,
@@ -201,6 +207,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           const SizedBox(height: 15),
                           ElevatedButton(
                             onPressed: () {
+                              print(ctrl);
+                              print(ctrl);
+
                               if (Validators.isValidForm(formKey)) {
                                 UserModel updateUser = UserModel(
                                   name: ctrl['name']!.text,

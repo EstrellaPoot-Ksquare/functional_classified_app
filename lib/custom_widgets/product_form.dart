@@ -18,6 +18,17 @@ class ProductForm extends StatefulWidget {
 }
 
 class _ProductFormState extends State<ProductForm> {
+  Map<String, TextEditingController> ctrl = {};
+  @override
+  void initState() {
+    ctrl = FormControllers.controllersFor([
+      'title',
+      'price',
+      'mobile',
+      'description',
+    ], data: widget.data);
+  }
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String imagePath = '';
   List<String> imagesList = [];
@@ -83,12 +94,6 @@ class _ProductFormState extends State<ProductForm> {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, TextEditingController> ctrl = FormControllers.controllersFor([
-      'title',
-      'price',
-      'mobile',
-      'description',
-    ], data: widget.data);
     const inputStyle = TextStyle(
       fontSize: 20,
     );
@@ -282,6 +287,9 @@ class _ProductFormState extends State<ProductForm> {
                 ElevatedButton(
                   onPressed: () {
                     if (Validators.isValidForm(formKey)) {
+                      print('controllers $ctrl');
+                      print('controllers $ctrl');
+
                       List<String> images = [];
                       images.add(imagePath);
                       AdModel ad = AdModel(
@@ -315,19 +323,17 @@ class _ProductFormState extends State<ProductForm> {
           ),
         ),
         if (_loading)
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  height: MediaQuery.of(context).size.height + 40,
-                  color: const Color.fromRGBO(0, 0, 0, 0.3),
-                  child: const Center(
-                    child: CircularProgressLoading(),
-                  ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height + 40,
+                color: const Color.fromRGBO(0, 0, 0, 0.3),
+                child: const Center(
+                  child: CircularProgressLoading(),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
       ],
     );
