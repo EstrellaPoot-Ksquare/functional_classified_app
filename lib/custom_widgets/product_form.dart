@@ -121,65 +121,57 @@ class _ProductFormState extends State<ProductForm> {
                     showModalBottomSheet(
                       context: context,
                       builder: (BuildContext context) {
-                        return Container(
+                        return SizedBox(
                           height: 50,
-                          color: AppTheme.mainColor,
+                          // color: AppTheme.mainColor,
                           child: Center(
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
-                                Expanded(
-                                  child: GestureDetector(
-                                    onTap: () {
+                                Container(
+                                  color: const Color.fromARGB(255, 25, 107, 66),
+                                  width: width * 0.5,
+                                  child: ElevatedButton(
+                                    onPressed: () {
                                       Navigator.pop(context);
                                       _loadMultipleImages();
                                     },
-                                    child: Container(
-                                      child: Row(
+                                    style: showModalElevatedBtn(),
+                                    child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: const [
+                                          Icon(Icons.image_outlined),
                                           Text(
                                             'Gallery',
                                             style: TextStyle(
                                               color: Colors.white,
                                             ),
                                           ),
-                                          Icon(
-                                            Icons.image_outlined,
-                                            color: Colors.white,
-                                          )
-                                        ],
-                                      ),
-                                    ),
+                                        ]),
                                   ),
                                 ),
                                 Container(
-                                  color: Colors.white,
-                                  height: 50,
-                                  width: 1,
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      TextButton.icon(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                          _loadImage('camera');
-                                        },
-                                        label: const Text(
-                                          'Camera',
-                                          style: TextStyle(
-                                            color: Colors.white,
+                                  color: const Color.fromARGB(255, 25, 107, 66),
+                                  width: width * 0.5,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      _loadImage('camera');
+                                    },
+                                    style: showModalElevatedBtn(),
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: const [
+                                          Icon(Icons.camera_alt_outlined),
+                                          Text(
+                                            'Camera',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
                                           ),
-                                        ),
-                                        icon: const Icon(
-                                          Icons.camera_alt_outlined,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
+                                        ]),
                                   ),
                                 ),
                               ],
@@ -336,6 +328,13 @@ class _ProductFormState extends State<ProductForm> {
             ],
           ),
       ],
+    );
+  }
+
+  ButtonStyle showModalElevatedBtn() {
+    return ElevatedButton.styleFrom(
+      shape: const BeveledRectangleBorder(borderRadius: BorderRadius.zero),
+      side: const BorderSide(color: Colors.white),
     );
   }
 }
